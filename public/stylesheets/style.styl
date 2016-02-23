@@ -1,0 +1,126 @@
+
+$font_size = 20px  // Change this to resize the application viewport.
+$page_width = 40em
+$content_height = 20em
+$list_width = 10em
+$label_width = 5em
+$primary_color = #59595e
+$secondary_color = #1d74b7
+$link_color = #1d74b7
+$wash_color = #f5f7f9
+$cursor_background = #ddd
+$border = 2px solid lightgrey
+
+// Reset user-agent defaults.
+*
+    color $primary_color
+    font-size $font_size
+    font-family sans-serif
+    margin 0
+    padding 0
+    box-sizing border-box
+
+table
+    border-collapse collapse
+    border-spacing: 0
+    td
+        padding 0.2em
+
+body
+    width $page_width
+    margin 0.2em
+
+h1
+    color $secondary_color
+    font-size 1.5em
+    margin-top-bottom 0.2em
+    padding 0.2em
+    background linear-gradient(top, white 0%, #e5ebee 15%, #e5ebee 85%, white 100%)
+
+a
+    color $link_color
+    text-decoration underline
+    &:hover
+        cursor pointer
+
+label
+    color $secondary_color
+
+input, textarea
+    border $border
+    outline none
+    border-radius 0.2em
+
+button
+    padding-left-right 0.1em
+    min-width 4em
+
+.error
+    color red
+    font-weight bold
+
+[readonly]
+    color silver
+
+:invalid
+    border-color red
+    box-shadow 0 0 5px rgba(255, 0, 0, .8)
+
+//:required
+//  border-color #88a
+//  box-shadow 0 0 5px rgba(0, 0, 255, .5)
+
+table.detail
+    margin-top-bottom 0.5em
+    td
+        vertical-align top
+        &:first-child
+            text-align right
+            padding-right 0.5em
+        &:nth-child(1)
+            color $secondary_color
+    td:nth-child(1)
+        width $label_width
+    td:nth-child(2)
+        background $wash_color
+    td:nth-child(2), input, textarea
+        width $page_width - $list_width - $label_width - 0.2em
+    button
+        margin-top 0.2em
+
+#ribbon
+    div:nth-child(1)
+        float left
+    div:nth-child(2)
+        text-align right
+
+#status
+    margin-top 0.2em
+    .message
+        font-size .75em
+        text-align right
+
+#content
+    margin-top 0.5em
+
+#list
+    height $content_height
+    width $list_width
+    border $border
+    overflow auto
+    float left
+    ul
+        list-style-type none
+    li
+        padding 0.2em
+        color $secondary_color
+        &:nth-child(odd)
+            background $wash_color
+        &:hover
+            cursor pointer
+        &.cursor
+            background $cursor_background !important
+
+#detail
+    height $content_height
+    border $border

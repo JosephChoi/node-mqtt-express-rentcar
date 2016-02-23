@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>City Car</title>
+        <link rel='stylesheet' href='/stylesheets/style.css' />
+        <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <script src="/javascripts/cars/car.js"></script>
+    </head>
+    <body>
+        <h1><%= title %></h1>
+        <div>
+            <label for="carId">Car Id</label>
+            <input type="text" id="carId" readonly value="<%= (car ? car._id : '') %>"/>
+        </div>
+        <div>
+            <label for="carRegNo">Car Registration No.</label>
+            <input type="text" id="carRegNo" value="<%= (car ? car.carRegNo : '') %>"/>
+        </div>
+        <div>
+            <label for="countryCd">Country</label>
+            <input type="text" id="countryCd" value="<%= (car? car.countryCd : '') %>"/>
+        </div>
+        <div>
+            <label for="locationCd">Location</label>
+            <input type="text" id="locationCd" value="<%= (car ? car.locationCd : '') %>"/>
+        </div>
+        <div>
+            <label for="branchCd">Branch</label>
+            <input type="text" id="branchCd" value="<%= (car ? car.branchCd : '') %>"/>
+        </div>
+        <div>
+            <label for="carSeqNo">Car Sequence No.</label>
+            <input type="text" id="carSeqNo" value="<%= (car ? car.carSeqNo : '') %>"/>
+        </div>
+        <div class="btnArea" align="right">
+            <div class="btnLeftArea" style="float:left;">
+                <button id="btnCarList">Car List</button>
+            </div>
+            <button id="btnNew">New</button>
+            <button id="btnSave">Save</button>
+        </div>
+        
+    </body>
+</html>

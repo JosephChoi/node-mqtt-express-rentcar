@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>City Car</title>
+        <link rel='stylesheet' href='../stylesheets/style.css' />
+        <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <script src="/javascripts/countries/countryCodeList.js"></script>
+    </head>
+    <body>
+        <h2><%= title %></h2>
+        <table>
+            <tbody>
+                <tr>
+                    <th>Country Id</th>
+                    <th>Country Code</th>
+                    <th>Country Name</th>
+                    <th>Country Description</th>
+                    <th>Location Count in Country</th>
+                    <th>Func</th>
+                    <th>Deleted</th>
+                </tr>
+                <% for(var inx = 0; inx < countryCodes.length; inx++){ %>
+                <tr data-country-id="<%= countryCodes[inx]._id %>" data-country-cd="<%= countryCodes[inx].countryCd %>">
+                    <td class="countryId"><%= countryCodes[inx]._id %></td>
+                    <td class="countryCd"><%= countryCodes[inx].countryCd %></td>
+                    <td class="countryNm"><%= countryCodes[inx].countryNm %></td>
+                    <td class="countryDesc"><%= countryCodes[inx].countryDesc %></td>
+                    <td class="locationCount"><%= countryCodes[inx].locations.length %></td>
+                    <td>
+                        <a href="/countries/setting/<%= countryCodes[inx]._id %>">Setting</a>
+                        <a class="lnkDeleteCountryCode" href="#">Delete</a>
+                    </td>
+                    <td class="isDeleted"><%= (countryCodes[inx].isDeleted ? 'Y' : 'N') %></td>
+                </tr>
+                <% } %>
+                <% if(!countryCodes || countryCodes.length === 0){ %>
+                <tr>
+                    <td colspan="7">No Result</td>
+                </tr>
+                <% } %>
+            </tbody>
+        </table>
+        <div class="btnArea" align="right">
+            <button id="btnNew">New</button>
+        </div>
+    </body>
+</html>

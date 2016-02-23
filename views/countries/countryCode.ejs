@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Country Code</title>
+        <link rel='stylesheet' href='/stylesheets/style.css' />
+        <link rel='stylesheet' href='/plugins/jquery-ui-1.11.4/jquery-ui.min.css' />
+        <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <script src="/plugins/jquery-ui-1.11.4/jquery-ui.min.js"></script>
+        <script src="/javascripts/countries/countryCode.js"></script>
+    </head>
+    <body>
+        <h1><%= title %></h1>
+        <div>
+            <label for="countryCd">Country Code</label>
+            <input type="hidden" id="countryId" value="<%= (countryCode ? countryCode._id : '') %>"/>
+            <input type="text" id="countryCd" value="<%= (countryCode ? countryCode.countryCd : '') %>"/>
+        </div>
+        <div>
+            <label for="countryNm">Country Code Name</label>
+            <input type="text" id="countryNm" value="<%= (countryCode ? countryCode.countryNm : '') %>"/>
+        </div>
+        <div>
+            <label for="countryDesc">Country Code Description</label>
+            <input type="text" id="countryDesc" value="<%= (countryCode ? countryCode.countryDesc : '') %>"/>
+        </div>
+        <div>
+            <h2>Registed Location</h2>
+            <table>
+                <tbody>
+                    <tr>
+                        <th>Location Code</th>
+                        <th>Location Name</th>
+                        <th>Location Description</th>
+                        <th>Func</th>
+                        <th>Deleted</th>
+                    </tr>
+                    <% if(!countryCode || countryCode.locations.length === 0){ %>
+                    <tr>
+                        <td colspan="5">No Result</td>
+                    </tr>
+                    <% } else {%>
+                    <% for(var inx = 0; inx < countryCode.locations.length; inx++){ %>
+                    <tr data-location-id="<%= countryCode.locations[inx]._id %>"
+                        data-location-cd="<%= countryCode.locations[inx].locationCd %>">
+                        <td class="locationCd"><%= countryCode.locations[inx].locationCd %></td>
+                        <td class="locationNm"><%= countryCode.locations[inx].locationNm %></td>
+                        <td class="locationDesc"><%= countryCode.locations[inx].locationDesc %></td>
+                        <td>
+                            <a id="lnkSettingLocation" href="#">Setting</a>
+                            <a class="lnkDeleteLocation" href="#">Delete</a>
+                        </td>
+                        <td class="isDeleted"><%= (countryCode.locations[inx].isDeleted ? 'Y' : 'N') %></td>
+                    </tr>
+                    <% } %>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+        <div class="btnArea" align="right">
+            <div class="btnLeftArea" style="float:left;">
+                <button id="btnCountryList">Country List</button>
+            </div>
+            <button id="btnNew">New</button>
+            <button id="btnAddLocation">Add Location</button>
+            <button id="btnSave">Save</button>
+        </div>
+
+        
+        <div id="locationDialog" title="Add Locations">
+            <label for="LocationCd">Location Code</label>
+            <input type="hidden" id="locationId" class="text ui-widget-content ui-corner-all"/>
+            <input type="text" id="locationCd" class="text ui-widget-content ui-corner-all"/>
+            <label for="locationNm">Location Name</label>
+            <input type="text" id="locationNm" class="text ui-widget-content ui-corner-all"/>
+            <label for="locationDesc">Location Description</label>
+            <input type="text" id="locationDesc" class="text ui-widget-content ui-corner-all"/>
+        </div>
+    </body>
+</html>

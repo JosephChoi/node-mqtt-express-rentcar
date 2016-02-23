@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>City Car</title>
+        <link rel='stylesheet' href='/stylesheets/style.css' />
+        <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <script src="/plugins/mqttws31.js"></script>
+        <script src="/javascripts/cars/carList.js"></script>
+    </head>
+    <body>
+        <h2><%= title %></h2>
+        <table>
+            <tbody>
+                <tr>
+                    <th>Car Id</th>
+                    <th>Car Registration No.</th>
+                    <th>Country</th>
+                    <th>Location</th>
+                    <th>Branch</th>
+                    <th>Car Sequence No.</th>
+                    <th>Door Status</th>
+                    <th>Func</th>
+                    <th>Deleted</th>
+                </tr>
+                <% for(var inx = 0; inx < cars.length; inx++){ %>
+                <tr data-car-id="<%= cars[inx]._id %>" data-car-reg-no="<%= cars[inx].carRegNo %>"
+                    data-country-cd="<%= cars[inx].countryCd %>" data-location-cd="<%= cars[inx].locationCd %>"
+                    data-branch-cd="<%= cars[inx].branchCd %>" data-car-seq-no="<%= cars[inx].carSeqNo %>">
+                    <td class="carId"><%= cars[inx]._id %></td>
+                    <td class="carRegNo"><%= cars[inx].carRegNo %></td>
+                    <td class="countryCd"><%= cars[inx].countryCd %></td>
+                    <td class="locationCd"><%= cars[inx].locationCd %></td>
+                    <td class="branchCd"><%= cars[inx].branchCd %></td>
+                    <td class="carSeqNo"><%= cars[inx].carSeqNo %></td>
+                    <td class="doorStatus">
+                        <%= (cars[inx].status.length >= 1 && cars[inx].status[cars[inx].status.length - 1].doorLock) ? cars[inx].status[cars[inx].status.length - 1].doorLock : '?' %>
+                    </td>
+                    <td>
+                        <a href="/cars/setting/<%= cars[inx]._id %>">Setting</a>
+                        <a class="lnkDeleteCar" href="#">Delete</a>
+                        <a class="lnkOpenDoor" href="#">Open</a>
+                        <a class="lnkCloseDoor" href="#">Close</a>
+                    </td>
+                    <td class="isDeleted"><%= (cars[inx].isDeleted ? 'Y' : 'N') %></td>
+                </tr>
+                <% } %>
+                <% if(!cars || cars.length === 0){ %>
+                <tr>
+                    <td colspan="7">No Result</td>
+                </tr>
+                <% } %>
+            </tbody>
+        </table>
+        <div class="btnArea" align="right">
+            <button id="btnNew">New</button>
+        </div>
+    </body>
+</html>
