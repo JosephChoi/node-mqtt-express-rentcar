@@ -5,11 +5,12 @@ var carDatabase = new CarDataBase('localhost', 27017);
 
 MqttBatch = function (host, port) {
     if(!host){
-        host = 'mqtt://test.mosquitto.org';
+        // host = 'mqtt://test.mosquitto.org';
+        host = 'mqtt://broker.hivemq.com';
     }
 
     if(!port){
-        port = 0;
+        port = 1883;
     }
     
     this.mqttClient = mqtt.connect(host);

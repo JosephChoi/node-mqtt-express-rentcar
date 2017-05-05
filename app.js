@@ -12,7 +12,8 @@ var restRoutes = require('./routes/rest');
 var uiRoutes = require('./routes/ui');
 
 var MqttBatch = require('./batch/mqtt').MqttBatch;
-var mattBatch = new MqttBatch('mqtt://test.mosquitto.org');
+// var mattBatch = new MqttBatch('mqtt://test.mosquitto.org');
+var mattBatch = new MqttBatch('mqtt://broker.hivemq.com');
 
 var app = express();
 

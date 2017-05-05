@@ -3,7 +3,8 @@ $(document).ready(function(){
 //    var mqttClient = new Paho.MQTT.Client('test.mosquitto.org', 8080, "clientId");
 //    Anonymous clients are no longer accidently disconnected from the broker after a SIGHUP
 //    http://mosquitto.org/
-    var mqttClient = new Paho.MQTT.Client('test.mosquitto.org', 8080, "");
+    // var mqttClient = new Paho.MQTT.Client('test.mosquitto.org', 8080, "");
+    var mqttClient = new Paho.MQTT.Client('broker.hivemq.com', 8000, "");
     
     var receiveMqttMessage = function(message){
         
